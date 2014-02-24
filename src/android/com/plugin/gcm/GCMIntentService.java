@@ -1,7 +1,7 @@
 package com.plugin.gcm;
 
 import java.util.List;
-
+import java.util.Random;
 import com.google.android.gcm.GCMBaseIntentService;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -114,8 +114,8 @@ public class GCMIntentService extends GCMBaseIntentService {
 		if (msgcnt != null) {
 			mBuilder.setNumber(Integer.parseInt(msgcnt));
 		}
-		
-		mNotificationManager.notify((String) appName, NOTIFICATION_ID, mBuilder.build());
+		Random generator = new Random();
+		mNotificationManager.notify((String) appName, generator.nextInt(), mBuilder.build());
 	}
 	
 	public static void cancelNotification(Context context)
